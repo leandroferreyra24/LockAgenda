@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Panel principal</h1>
+
+<p>
+    Bienvenido a LockAgenda,
+    {{ session["usuario_nombre"] }}.
+</p>
+
+<p>
+    Has iniciado sesión correctamente.
+</p>
+
+{% endblock %}

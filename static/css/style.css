@@ -1,0 +1,361 @@
+/* ==========================================================================
+   LockAgenda · estilo minimalista
+   Paleta: gris verdoso claro, superficies blancas y acento verde verdín
+   ========================================================================== */
+
+:root {
+    --fondo: #f2f4f3;
+    --superficie: #ffffff;
+    --tinta: #17201d;
+    --tinta-suave: #66706b;
+    --linea: #dfe3e1;
+    --linea-fuerte: #c3cac7;
+
+    --acento: #2f6f62;
+    --acento-hover: #245a4f;
+    --acento-suave: #e6f1ed;
+
+    --error: #9f2f20;
+    --error-suave: #fbebe8;
+
+    --ancho-contenido: 880px;
+    --margen-lateral: max(32px, calc((100% - var(--ancho-contenido)) / 2 + 32px));
+
+    --radio: 8px;
+    --radio-grande: 14px;
+    --fuente: ui-sans-serif, system-ui, -apple-system, "Segoe UI Variable Text",
+              "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--fuente);
+    font-size: 16px;
+    line-height: 1.6;
+    background-color: var(--fondo);
+    color: var(--tinta);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --------------------------------------------------------------------------
+   Cabecera y navegación
+   (el <nav> está dentro del <head> en base.html, por eso el navegador lo
+   coloca antes del <header>; "order" lo recoloca debajo sin tocar el HTML)
+   -------------------------------------------------------------------------- */
+
+header {
+    order: 1;
+    background-color: var(--superficie);
+    color: var(--tinta);
+    padding: 16px var(--margen-lateral);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    border-bottom: 1px solid var(--linea);
+    font-size: 0.9rem;
+}
+
+header h2 {
+    margin: 0 auto 0 0;
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+header .logo {
+    display: flex;
+}
+
+header .logo img {
+    display: block;
+    height: 32px;
+    width: auto;
+    border-radius: 6px;
+}
+
+header span {
+    color: var(--tinta-suave);
+}
+
+header a {
+    color: var(--tinta);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 6px 12px;
+    border: 1px solid var(--linea);
+    border-radius: var(--radio);
+    transition: border-color 0.15s, color 0.15s;
+}
+
+header a:hover {
+    color: var(--acento);
+    border-color: var(--acento);
+}
+
+.nav-links {
+    order: 2;
+    display: flex;
+    gap: 4px;
+    padding: 0 calc(var(--margen-lateral) - 12px);
+    background-color: var(--superficie);
+    border-bottom: 1px solid var(--linea);
+}
+
+.nav-links a {
+    color: var(--tinta-suave);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 12px 12px 11px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+}
+
+.nav-links a:hover {
+    color: var(--tinta);
+    border-bottom-color: var(--acento);
+}
+
+/* --------------------------------------------------------------------------
+   Contenido
+   -------------------------------------------------------------------------- */
+
+main {
+    order: 3;
+    width: 100%;
+    max-width: var(--ancho-contenido);
+    margin: 0 auto;
+    padding: 48px 32px 64px;
+}
+
+h1 {
+    margin: 0 0 16px;
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+    color: var(--tinta);
+}
+
+main p {
+    max-width: 60ch;
+    margin: 0 0 8px;
+    color: var(--tinta-suave);
+}
+
+/* --------------------------------------------------------------------------
+   Formularios
+   -------------------------------------------------------------------------- */
+
+form {
+    background-color: var(--superficie);
+    padding: 32px;
+    border: 1px solid var(--linea);
+    border-radius: var(--radio-grande);
+    max-width: 560px;
+    box-shadow: none;
+}
+
+label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--tinta);
+}
+
+form > label:first-child {
+    margin-top: 0;
+}
+
+input {
+    width: 100%;
+    padding: 10px 12px;
+    font: inherit;
+    font-size: 0.95rem;
+    color: var(--tinta);
+    background-color: var(--superficie);
+    border: 1px solid var(--linea-fuerte);
+    border-radius: var(--radio);
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input:hover {
+    border-color: var(--tinta-suave);
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--acento);
+    box-shadow: 0 0 0 3px var(--acento-suave);
+}
+
+input::file-selector-button {
+    margin-right: 12px;
+    padding: 6px 12px;
+    font: inherit;
+    font-size: 0.875rem;
+    color: var(--tinta);
+    background-color: var(--fondo);
+    border: 1px solid var(--linea-fuerte);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+input[type="file"] {
+    padding: 8px;
+    color: var(--tinta-suave);
+}
+
+form p {
+    margin-top: 20px;
+    font-size: 0.875rem;
+}
+
+form img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-top: 4px;
+    padding: 8px;
+    border: 1px solid var(--linea);
+    border-radius: var(--radio);
+}
+
+button {
+    margin-top: 28px;
+    padding: 11px 20px;
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border: none;
+    border-radius: var(--radio);
+    background-color: var(--acento);
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+button:hover {
+    background-color: var(--acento-hover);
+}
+
+:focus-visible {
+    outline: 2px solid var(--acento);
+    outline-offset: 2px;
+}
+
+input:focus-visible {
+    outline: none;
+}
+
+/* --------------------------------------------------------------------------
+   Mensajes
+   -------------------------------------------------------------------------- */
+
+.message {
+    max-width: 560px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    border-radius: var(--radio);
+    font-size: 0.9rem;
+}
+
+.error {
+    background-color: var(--error-suave);
+    color: var(--error);
+}
+
+.success {
+    background-color: var(--acento-suave);
+    color: var(--acento-hover);
+}
+
+/* --------------------------------------------------------------------------
+   Acceso
+   -------------------------------------------------------------------------- */
+
+.login-body {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    background-color: var(--superficie);
+    padding: 40px 36px;
+    border: 1px solid var(--linea);
+    border-radius: var(--radio-grande);
+    box-shadow: none;
+}
+
+.login-container h1 {
+    margin-bottom: 4px;
+    font-size: 1.5rem;
+}
+
+.login-container h1,
+.login-container p {
+    text-align: center;
+}
+
+.login-container p {
+    margin: 0 auto 28px;
+    color: var(--tinta-suave);
+}
+
+.login-container .message {
+    max-width: none;
+}
+
+.login-container form {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    max-width: none;
+    box-shadow: none;
+}
+
+.login-container button {
+    width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Pantallas pequeñas
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 600px) {
+    :root {
+        --margen-lateral: 20px;
+    }
+
+    main {
+        padding: 32px 20px 48px;
+    }
+
+    form {
+        padding: 24px 20px;
+    }
+
+    .login-container {
+        padding: 32px 24px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
